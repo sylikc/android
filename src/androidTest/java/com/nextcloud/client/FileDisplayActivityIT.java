@@ -48,6 +48,7 @@ import androidx.test.rule.GrantPermissionRule;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
 import static junit.framework.TestCase.assertTrue;
 
 
@@ -113,13 +114,14 @@ public class FileDisplayActivityIT extends AbstractIT {
                               .execute(client).isSuccess());
 
         Activity sut = activityRule.launchActivity(null);
-        Thread.sleep(2000);
+
+        getInstrumentation().waitForIdleSync();
 
         EventBus.getDefault().post(new SearchEvent("",
                                                    SearchRemoteOperation.SearchType.SHARED_FILTER,
                                                    SearchEvent.UnsetType.UNSET_BOTTOM_NAV_BAR));
 
-        Thread.sleep(2000);
+        getInstrumentation().waitForIdleSync();
 
         Screenshot.snapActivity(sut).record();
     }
