@@ -81,9 +81,11 @@ public final class FileStorageUtils {
                 + File.separator
                 + MainApp.getDataFolder()
                 + File.separator
-                + Uri.encode(accountName, "@");
+                + Uri.encode(accountName, "@").replace("%", "_");
         // URL encoding is an 'easy fix' to overcome that NTFS and FAT32 don't allow ":" in file names,
         // that can be in the accountName since 0.1.190B
+		// Some apps may decode the special characters in the internal routines causing problems.
+		// Replace with _ to prevent other apps from decoding into the characters
     }
 
     /**
@@ -105,9 +107,11 @@ public final class FileStorageUtils {
                 + File.separator
                 + "tmp"
                 + File.separator
-                + Uri.encode(accountName, "@");
+                + Uri.encode(accountName, "@").replace("%", "_");
         // URL encoding is an 'easy fix' to overcome that NTFS and FAT32 don't allow ":" in file names,
         // that can be in the accountName since 0.1.190B
+		// Some apps may decode the special characters in the internal routines causing problems.
+		// Replace with _ to prevent other apps from decoding into the characters
     }
 
     /**
@@ -120,9 +124,11 @@ public final class FileStorageUtils {
                 + File.separator
                 + "tmp"
                 + File.separator
-                + Uri.encode(accountName, "@");
+                + Uri.encode(accountName, "@").replace("%", "_");
         // URL encoding is an 'easy fix' to overcome that NTFS and FAT32 don't allow ":" in file names,
         // that can be in the accountName since 0.1.190B
+		// Some apps may decode the special characters in the internal routines causing problems.
+		// Replace with _ to prevent other apps from decoding into the characters
     }
 
     /**
